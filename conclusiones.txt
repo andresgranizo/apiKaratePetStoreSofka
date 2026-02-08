@@ -1,0 +1,47 @@
+
+
+POR QUE KARATE
+--------------
+Elegí Karate porque simplifica mucho las pruebas de API. No necesitas escribir
+step definitions como en Cucumber tradicional, todo se hace directo en el
+feature file.
+
+SOBRE LA API
+------------
+PetStore es la API de ejemplo de Swagger.
+
+TODO
+------------
+Implemente el flujo CRUD completo:
+1. Crear una mascota nueva
+2. Consultarla por su ID
+3. Actualizar el nombre y ponerla en status "sold"
+4. Buscar todas las mascotas con status "sold"
+
+PROBLEMAS
+------------------
+- IDs duplicados: Al principio usaba IDs fijos y a veces fallaba porque
+  ya existian. Lo arregle generando IDs random con Math.random().
+
+- Orden de ejecucion: Queria que un test usara datos de otro pero Karate
+  ejecuta los scenarios de forma independiente. Al final hice que cada
+  scenario cree su propia data.
+
+QUE ME GUSTO
+------------
+- La sintaxis es muy limpia
+- Los reportes se generan automaticamente
+- El match para validar JSON es muy potente
+- No hay que escribir codigo Java para los tests basicos
+
+MEJORAS PENDIENTES
+------------------
+- Agregar tests de error (404, 400, etc)
+- Probar los otros endpoints (Store, User)
+- Agregar autenticacion con API key
+
+TIEMPO
+------
+Unas 3-4 horas aproximadamente.
+
+Andres Granizo - 2026
