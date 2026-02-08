@@ -1,47 +1,34 @@
+Por que Karate?
+Basicamente porque no necesitas escribir step definitions aparte como en Cucumber normal.
+Todo va directo en el .feature y eso ahorra bastante tiempo. Ademas los matchers
+para JSON son muy buenos, tipo "match response contains { name: '#string' }" y ya.
 
+Que hice
+--------
+Implemente el CRUD completo de mascotas:
+1. Crear una mascota
+2. Consultarla por ID
+3. Actualizarla (nombre + status "sold")
+4. Buscar por status
 
-POR QUE KARATE
---------------
-Elegí Karate porque simplifica mucho las pruebas de API. No necesitas escribir
-step definitions como en Cucumber tradicional, todo se hace directo en el
-feature file.
+Lo mas complicado fue lo de los IDs. Al principio puse IDs fijos (tipo 999)
+y a veces fallaba porque ya existia esa mascota en la API. La solucion fue
+generar IDs random con Math.random() * 100000.
 
-SOBRE LA API
-------------
-PetStore es la API de ejemplo de Swagger.
+Otro tema fue que queria encadenar los scenarios (que el GET use el ID del POST)
+pero Karate ejecuta cada scenario independiente. Termine haciendo que cada uno
+cree su propia data y listo.
 
-TODO
-------------
-Implemente el flujo CRUD completo:
-1. Crear una mascota nueva
-2. Consultarla por su ID
-3. Actualizar el nombre y ponerla en status "sold"
-4. Buscar todas las mascotas con status "sold"
+Lo bueno de Karate
+- No escribes Java para los tests, solo el runner
+- Los reportes se generan solos y quedan bastante bien
+- La sintaxis para validar responses es muy directa
 
-PROBLEMAS
-------------------
-- IDs duplicados: Al principio usaba IDs fijos y a veces fallaba porque
-  ya existian. Lo arregle generando IDs random con Math.random().
+Que falta
+- Tests de error (mandar datos malos, IDs que no existen, etc)
+- Probar los otros endpoints de Store y User
+- Meter autenticacion con API key
 
-- Orden de ejecucion: Queria que un test usara datos de otro pero Karate
-  ejecuta los scenarios de forma independiente. Al final hice que cada
-  scenario cree su propia data.
+Me tomo unas 3-4 horas armar todo y dejarlo corriendo bien.
 
-QUE ME GUSTO
-------------
-- La sintaxis es muy limpia
-- Los reportes se generan automaticamente
-- El match para validar JSON es muy potente
-- No hay que escribir codigo Java para los tests basicos
-
-MEJORAS PENDIENTES
-------------------
-- Agregar tests de error (404, 400, etc)
-- Probar los otros endpoints (Store, User)
-- Agregar autenticacion con API key
-
-TIEMPO
-------
-Unas 3-4 horas aproximadamente.
-
-Andres Granizo - 2026
+Andres Granizo
