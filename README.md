@@ -32,7 +32,7 @@ api-karate-petstore/
 
 ```bash
 # Clonar y entrar al proyecto
-git clone <url-repositorio>
+git clone https://github.com/andresgranizo/apiKaratePetStoreSofka.git
 cd api-karate-petstore
 
 # Ejecutar todos los tests
